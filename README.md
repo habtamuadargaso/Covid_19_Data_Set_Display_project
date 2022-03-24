@@ -251,7 +251,6 @@ United Kingdom Cayman Islands                        1       1          0
                Guernsey                              0       0          0
                Jersey                                0       0          0
                United Kingdom                     1543      55         20
-
  ```
 
  
@@ -307,7 +306,6 @@ print(result)
 31           Macau         12       0         10
 32           Tibet          1       0          1
 33         Unknown          0       0          0
-
 ```
 
 
@@ -377,5 +375,4 @@ to get this solution
 155                  US     108
 156             Ukraine       2
 158      United Kingdom      56
-
 ```
