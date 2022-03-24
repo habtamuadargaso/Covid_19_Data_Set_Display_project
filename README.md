@@ -14,6 +14,7 @@ covid_data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID
 
 # check out using printing funcation that holds information  
 # print(covid_data)
+```
     Province/State        Country/Region  ...   Latitude  Longitude
 0            Hubei                 China  ...  30.975600  112.27070
 1              NaN                 Italy  ...  41.871900   12.56740
@@ -29,7 +30,7 @@ covid_data = pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID
 
 [302 rows x 8 columns]
 
-
+```
 
 
 print("\nDataSet information: ")
