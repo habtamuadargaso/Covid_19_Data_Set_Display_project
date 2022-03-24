@@ -311,13 +311,15 @@ print(result)
 ```
 
 
-```
+
 # import pandas as pd
 # 5 Get the latest country wise deaths cases of Novel Coronavirus
 
 to get this solution 
 #  = data[data['Deaths']>0][['Country/Region', 'Deaths']]
 # print(result)
+
+```
          Country/Region  Deaths
 1               Albania       1
 2               Algeria       4
