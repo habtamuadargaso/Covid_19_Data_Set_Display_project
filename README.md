@@ -37,6 +37,7 @@ print("\nDataSet information: ")
 # to get missing value and check missing values 
 # print(covid_data.info())
 
+```
 
 DataSet information: 
 <class 'pandas.core.frame.DataFrame'>
@@ -56,7 +57,11 @@ dtypes: float64(2), int64(3), object(3)
 memory usage: 19.0+ KB
 None
 
+```
+
+
 # print(covid_data.isna().sum())
+```
  Missing data information:
 Province/State    155
 Country/Region      0
@@ -71,7 +76,7 @@ dtype: int64
 
 
 # 2 Get the latest number of confirmed, deaths, recovered and active cases of Novel Coronavirus Country wise
-
+```
                      Country/Region  Confirmed  Deaths  Recovered  Active
 0                       Afghanistan         26       0          1      25
 1                           Albania         55       1          0      54
@@ -84,7 +89,7 @@ dtype: int64
 162                         Vietnam         66       0         16      50
 163            Winter Olympics 2022          0       0          0       0
 164  occupied Palestinian territory          0       0          0       0
-
+```
 # 3 import pandas as pd
 # Write a Python program to get the latest number of confirmed deaths and recovered people of Novel Coronavirus (COVID-19) cases Country/Region - Province/State wise
 
@@ -99,7 +104,7 @@ pd.set_option('display.max_rows', None)
 # to printe max number of row use max()
 # pd.set_option('display.max_rows', None)
 
-
+```
 Australia      Australian Capital Territory          2       0          0
                From Diamond Princess                 0       0          0
                New South Wales                     171       2          4
@@ -247,6 +252,8 @@ United Kingdom Cayman Islands                        1       1          0
                Jersey                                0       0          0
                United Kingdom                     1543      55         20
 
+ ```
+
  
  
  # 4 Write a Python program to get the Chinese province wise cases of confirmed, deaths and recovered cases of Novel Coronavirus (COVID-19            
@@ -263,6 +270,7 @@ result = c_data.sort_values(by='Confirmed', ascending=False)
 # pandas. reset_index in pandas is used to reset index of the dataframe object to default indexing (0 to number of rows minus 1) or to reset multi level index.
 result = result.reset_index(drop=True)
 
+```
 print(result)
     Province/State  Confirmed  Deaths  Recovered
 0            Hubei      67799    3111      56003
@@ -300,10 +308,10 @@ print(result)
 32           Tibet          1       0          1
 33         Unknown          0       0          0
 
+```
 
 
-
-
+```
 # import pandas as pd
 # 5 Get the latest country wise deaths cases of Novel Coronavirus
 
@@ -367,3 +375,5 @@ to get this solution
 155                  US     108
 156             Ukraine       2
 158      United Kingdom      56
+
+```
