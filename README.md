@@ -72,7 +72,7 @@ Recovered           0
 Latitude            2
 Longitude           2
 dtype: int64
-
+```
 
 
 # 2 Get the latest number of confirmed, deaths, recovered and active cases of Novel Coronavirus Country wise
