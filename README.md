@@ -425,3 +425,6 @@ grouped = covid_data.groupby('Last Update')['Last Update', 'Confirmed', 'Deaths'
 fig = px.line(grouped, x="Last Update", y="Confirmed",
              title="Worldwide Confirmed Novel Coronavirus(COVID-19) Cases Over Time")
 fig.show()
+
+##Out put
+![alt text](https://github.com/habtamuadargaso/Covid_19_Data_Set_Display_project/blob/main/Screen%20Shot%202022-03-24%20at%209.31.57%20PM.png)
