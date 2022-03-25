@@ -376,3 +376,52 @@ to get this solution
 156             Ukraine       2
 158      United Kingdom      56
 ```
+11.
+import pandas as pd
+import plotly.express as px
+covid_data= pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-17-2020.csv')
+us_data = covid_data[covid_data['Country/Region']=='US'].drop(['Country/Region','Latitude', 'Longitude'], axis=1)
+us_data = us_data[us_data.sum(axis = 1) > 0]
+us_data = us_data.groupby(['Province/State'])['Deaths'].sum().reset_index()
+us_data_death = us_data[us_data['Deaths'] > 0]
+state_fig = px.bar(us_data_death, x='Province/State', y='Deaths', title='State wise deaths reported of COVID-19 in USA', text='Deaths')
+state_fig.show()
+
+12
+import pandas as pd
+import plotly.express as px
+ 
+covid_data= pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-18-2020.csv')
+covid_data['Active'] = covid_data['Confirmed'] - covid_data['Deaths'] - covid_data['Recovered']
+us_data = covid_data[covid_data['Country/Region']=='US'].drop(['Country/Region','Latitude', 'Longitude'], axis=1)
+us_data = us_data[us_data.sum(axis = 1) > 0]
+ 
+us_data = us_data.groupby(['Province/State'])['Active'].sum().reset_index()
+us_data_death = us_data[us_data['Active'] > 0]
+state_fig = px.bar(us_data_death, x='Province/State', y='Active', title='State wise recovery cases of COVID-19 in USA', text='Active')
+state_fig.show()
+
+
+3
+import pandas as pd
+import plotly.express as px
+covid_data= pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-19-2020.csv')
+covid_data['Active'] = covid_data['Confirmed'] - covid_data['Deaths'] - covid_data['Recovered']
+combine_us_data = covid_data[covid_data['Country/Region']=='US'].drop(['Country/Region','Latitude', 'Longitude'], axis=1)
+combine_us_data = combine_us_data[combine_us_data.sum(axis = 1) > 0]
+combine_us_data = combine_us_data.groupby(['Province/State'])['Confirmed', 'Deaths', 'Recovered', 'Active'].sum().reset_index()
+combine_us_data = pd.melt(combine_us_data, id_vars='Province/State', value_vars=['Confirmed', 'Deaths', 'Recovered', 'Active'], value_name='Count', var_name='Case')
+fig = px.bar(combine_us_data, x='Province/State', y='Count', text='Count', barmode='group', color='Case', title='USA State wise combine number of confirmed, deaths, recovered, active COVID-19 cases')
+fig.show()
+
+14. 
+import pandas as pd
+import plotly.express as px
+import plotly.io as pio
+pio.templates.default = "plotly_dark"
+ 
+covid_data= pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-19-2020.csv')
+grouped = covid_data.groupby('Last Update')['Last Update', 'Confirmed', 'Deaths'].sum().reset_index()
+fig = px.line(grouped, x="Last Update", y="Confirmed",
+             title="Worldwide Confirmed Novel Coronavirus(COVID-19) Cases Over Time")
+fig.show()
