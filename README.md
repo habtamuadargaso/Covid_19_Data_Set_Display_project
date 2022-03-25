@@ -387,44 +387,39 @@ us_data_death = us_data[us_data['Deaths'] > 0]
 state_fig = px.bar(us_data_death, x='Province/State', y='Deaths', title='State wise deaths reported of COVID-19 in USA', text='Deaths')
 state_fig.show()
 
-12
+
+
+# 5
+
 import pandas as pd
+
+# The plotly. express module (usually imported as px ) contains functions that can create entire figures at once, and is referred to as Plotly Express or PX
 import plotly.express as px
- 
+
+ # read_csv is an important pandas function to read csv files and do operations on
 covid_data= pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-18-2020.csv')
+# From data select out the countries covid-19 case Active   
 covid_data['Active'] = covid_data['Confirmed'] - covid_data['Deaths'] - covid_data['Recovered']
+# then from ACtive case Select out country is USA =
+# The Pandas .drop() method deletes rows and columns from Python dataframes and Series objects. drop country name  city expect USA
+# axis =1 sum(axis=rows_ = 0 or_columns = 1)
 us_data = covid_data[covid_data['Country/Region']=='US'].drop(['Country/Region','Latitude', 'Longitude'], axis=1)
+# sum the across the colunm to get two number .sum(axis) 
 us_data = us_data[us_data.sum(axis = 1) > 0]
- 
+ # groupby the data based on the provice/state  
+ # using reset_index() function for groupby multiple columns and single column
 us_data = us_data.groupby(['Province/State'])['Active'].sum().reset_index()
+# in  USA Province check check Active case > 0
 us_data_death = us_data[us_data['Active'] > 0]
+# plot the  graphy 
 state_fig = px.bar(us_data_death, x='Province/State', y='Active', title='State wise recovery cases of COVID-19 in USA', text='Active')
 state_fig.show()
 
 
-3
-import pandas as pd
-import plotly.express as px
-covid_data= pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-19-2020.csv')
-covid_data['Active'] = covid_data['Confirmed'] - covid_data['Deaths'] - covid_data['Recovered']
-combine_us_data = covid_data[covid_data['Country/Region']=='US'].drop(['Country/Region','Latitude', 'Longitude'], axis=1)
-combine_us_data = combine_us_data[combine_us_data.sum(axis = 1) > 0]
-combine_us_data = combine_us_data.groupby(['Province/State'])['Confirmed', 'Deaths', 'Recovered', 'Active'].sum().reset_index()
-combine_us_data = pd.melt(combine_us_data, id_vars='Province/State', value_vars=['Confirmed', 'Deaths', 'Recovered', 'Active'], value_name='Count', var_name='Case')
-fig = px.bar(combine_us_data, x='Province/State', y='Count', text='Count', barmode='group', color='Case', title='USA State wise combine number of confirmed, deaths, recovered, active COVID-19 cases')
-fig.show()
 
-14. 
-import pandas as pd
-import plotly.express as px
-import plotly.io as pio
-pio.templates.default = "plotly_dark"
- 
-covid_data= pd.read_csv('https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-19-2020.csv')
-grouped = covid_data.groupby('Last Update')['Last Update', 'Confirmed', 'Deaths'].sum().reset_index()
-fig = px.line(grouped, x="Last Update", y="Confirmed",
-             title="Worldwide Confirmed Novel Coronavirus(COVID-19) Cases Over Time")
-fig.show()
+
 
 ##Out put
+To add image in readme file 
+# ![alt text](image url in git)
 ![alt text](https://github.com/habtamuadargaso/Covid_19_Data_Set_Display_project/blob/main/Screen%20Shot%202022-03-24%20at%209.31.57%20PM.png)
