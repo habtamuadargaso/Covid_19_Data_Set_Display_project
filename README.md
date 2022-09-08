@@ -1,4 +1,4 @@
-# 1 Write a Python program to display first 5 rows from COVID-19 dataset. Also print the dataset information and check the missing values
+Write a Python program to display first 5 rows from COVID-19 dataset. Also print the dataset information and check the missing values
 
 The detail information about the Display_first 
 # import pandas as pd
